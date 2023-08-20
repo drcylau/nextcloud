@@ -48,6 +48,7 @@ services:
     links:
       - app
     volumes:
+      - ./nginx/cert:/etc/ssl:ro
       - ./nginx/logs:/var/log/nginx
     volumes_from:
       - app
