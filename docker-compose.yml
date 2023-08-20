@@ -38,7 +38,9 @@ services:
     restart: always  
   
   web:
-    image: nginx
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
     container_name: nextcloud_nginx
     restart: always
     ports:
@@ -46,8 +48,6 @@ services:
     links:
       - app
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./cert:/etc/ssl:ro
       - ./nginx/logs:/var/log/nginx
     volumes_from:
       - app
